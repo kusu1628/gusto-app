@@ -1,0 +1,123 @@
+
+body{
+  font-family: "Open Sans", sans-serif ;
+}
+
+h1{
+  color: #ccc ;
+}
+
+.content article{
+    padding: 100px 0;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.head-box{
+  position: relative;
+  height: 600px;
+  background-image: url(/images/key1.jpeg);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+
+.logo{
+  height: 100%;
+  width: 200px;
+  background-image: url(/images/gusto11.jpg);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 100px 80px;
+  position: absolute;
+  top: 50%;
+  margin-top: -550px;
+  margin-left: 10px;
+}
+
+.menu_logo_header{
+    background: rgba(0, 0, 0, 0.5);
+    height:100px;
+    background-size: 100%, 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: fixed;
+    width: 1247px;
+}
+
+#nav {
+    text-align:center;
+}
+
+#nav li {
+    padding: 5px 15px;
+    display:inline;
+    font-weight: bold;
+    color:chartreuse;
+    margin: 0 0 0 5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#nav li:hover {
+     color:ghostwhite;
+     transition: 0.2s ease-in,
+              color 0.2s ease-in;
+}
+
+
+
+#lab{
+  color:lawngreen;
+}
+
+/* to hide close button in dialog box */
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+   float: none !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+     text-align: center; 
+}
+
+.ui-dialog-buttonpane {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    height: 50px;
+}
+
+/*.ui-dialog{
+  background: rgba(0, 0, 0, 0.5);
+  top: -930.7px !important;
+}*/
+
+.customdialogbtn{
+  background : red;
+  padding-left: 2px;
+}
+
+.btn{
+   background-color:#00CC00 !important;
+   margin-right: 10px;
+   
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
