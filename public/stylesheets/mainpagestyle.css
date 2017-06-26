@@ -14,15 +14,23 @@ h1{
     text-align: center;
 }
 
+.head-boxx{
+  background-size: 100% 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
 .head-box{
   position: relative;
   height: 600px;
-  background-image: url(/images/key1.jpeg);
+  background-image: url(/images/background1605.jpg);
   background-attachment: fixed;
   background-size: 100% 100%;
   background-position: top center;
   background-repeat: no-repeat;
   overflow: hidden;
+  margin-top:20px;
 }
 
 
@@ -40,7 +48,6 @@ h1{
 }
 
 .menu_logo_header{
-    background: rgba(0, 0, 0, 0.5);
     height:100px;
     background-size: 100%, 100%;
     background-position: top center;
@@ -58,7 +65,9 @@ h1{
     padding: 5px 15px;
     display:inline;
     font-weight: bold;
-    color:chartreuse;
+    font-size: 160%;
+    font-family: Comic Sans MS;
+    color: chartreuse;
     margin: 0 0 0 5px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
     -webkit-border-radius: 14px;
@@ -92,7 +101,7 @@ h1{
 }
 
 .ui-dialog .ui-dialog-buttonpane {
-     text-align: center; 
+     text-align: center;
 }
 
 .ui-dialog-buttonpane {
@@ -114,10 +123,36 @@ h1{
 .btn{
    background-color:#00CC00 !important;
    margin-right: 10px;
-   
+   border-radius: 12px !important;
 }
+
 
 .btn:hover {
     opacity: 0.8;
 }
 
+.btnLogIn{
+  font-size: 16px !important;
+}
+
+
+.btnLogIn:hover {
+    background-color: #4CAF50;
+    color: white;
+    opacity: 0.8;
+  }
+
+
+.divLogIn{
+  margin-right:40px;
+  margin-top: 8px;
+  width: 40px;
+  float: right;
+  display: inline;
+}
+
+.inlinedis{
+  display: inline;
+  float: left;
+  margin-left: 500px;
+}

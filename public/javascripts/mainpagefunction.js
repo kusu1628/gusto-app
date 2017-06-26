@@ -12,7 +12,7 @@ $( function(){
   setdialogbox();
   $("#nav > li:nth-child(1)").mousedown(function(){
     // go to home page
-     move(); 
+     move();
   });
   $("#nav > li:nth-child(2)").mousedown(function(){
     call_joinus();
@@ -23,9 +23,13 @@ $( function(){
   $("#nav > li:nth-child(1)").mousedown(function(){
     // go to home page
   });
+  $('.divLogIn').on('click', 'button', function(){
+    //alert('hey you clickinig login button!!!');
+    openLoginPage();
+  });
 });
- 
-// setting dialog box but making autoOpen false. 
+
+// setting dialog box but making autoOpen false.
 //It will be open on click inside call_joinus method
 function setdialogbox(){
     dialog = $( "#dialog-form" ).dialog({
@@ -37,7 +41,7 @@ function setdialogbox(){
       width: 340,
       modal: true,
       dialogClass: "no-close",
-     /* buttons: 
+     /* buttons:
       [{
       text: "submit",
       icons: {primary: "ui-icon-heart"},
@@ -64,11 +68,14 @@ function call_joinus(){
   console.log("Hello come to join us!!!");
   //window.location.href = '/joinus';
    dialog.dialog( "open" );
-
 }
 
 function closeWin(){
   $("#dialog-form").dialog( "close" );
+}
+
+function openLoginPage(){
+  window.location.href = '/login';
 }
 
 // function to be called on button click to send request to server
@@ -76,16 +83,15 @@ function closeWin(){
           var data = {};
 					data.title = "title";
 					data.message = "message";
-					
+
 					$.ajax({
 						type: 'POST',
 						data: JSON.stringify(data),
 				        contentType: 'application/json',
-                        url: 'http://localhost:3000/register',						
+                        url: 'http://localhost:3000/register',
                         success: function(data) {
                             console.log('success');
                             console.log(JSON.stringify(data));
                         }
                     });
 }*/
-
