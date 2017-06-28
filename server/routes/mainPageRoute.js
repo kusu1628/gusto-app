@@ -18,7 +18,7 @@ router.get('/login', (req, res) =>{
   res.render('loginPage', {title: 'Login In !'});
 })
 
-router.post('/login', function(req, res) {
+router.post('/loginusr', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, user) {
     if (!user) {
       //res.render('login.jade', { error: 'Invalid email or password.' });

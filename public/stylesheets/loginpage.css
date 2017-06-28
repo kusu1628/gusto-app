@@ -1,0 +1,24 @@
+body, html {
+    height: 100%;
+    margin: 0 0 0 0;
+}
+
+div.loginDiv {
+  background-image: url(/images/background1605.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.formDiv{
+  width:50%; /* 70% of the parent*/
+  height: 70%;
+  margin:100px 330px;
+  border:3px solid white;
+  position: absolute;
+}
+
+div.rowalign{
+  margin-left: 20px;
+}

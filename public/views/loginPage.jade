@@ -1,6 +1,45 @@
 doctype html
 html(lang='en')
   head
-    title login
+    meta(charset='utf-8')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='../stylesheets/loginpage.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
   body
-    h1 Welcome to login page !!!
+    .loginDiv
+      .formDiv
+        .panel.panel-default(style='border: solid 2px black; background-color: rgba(19, 11, 3, 0.35)')
+          .panel-body(style='min-height: 456px')
+            .row.rowalign
+              .container
+                .col-sm-6
+                  form#contact_form.form-horizontal(method='POST', action='/loginusr', role='form')
+                    fieldset
+                      .form-group
+                        label#lab.control-label(for='firstname' style='color: white') EMAIL
+                        .input-group
+                          span.input-group-addon
+                            i.glyphicon.glyphicon-user
+                          input.form-control(name='email', placeholder='E-Mail', type='text')
+                      .form-group
+                        label#lab.control-label(style='color: white') PASSWORD
+                        .input-group
+                          span.input-group-addon
+                            i.glyphicon.glyphicon-user
+                          input.form-control(name='password', placeholder='Password', type='password')
+                      .form-group
+                        .form-check
+                            input.form-check-input(type='checkbox', value='remember-me', name='rememberMe')
+                            label#lab.control-label(style='color: white') Remember me
+                      .form-group
+                          button.btn.btn-primary(type='submit') Log In      
+    
+
+                          
+script(src='../javascripts/lib/jquery-3.1.0.min.js')
+//script(src="../javascripts/mainpagefunction.js")
+script(src='https://code.jquery.com/jquery-1.12.4.js')
+script(src='http://code.jquery.com/ui/1.11.1/jquery-ui.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
