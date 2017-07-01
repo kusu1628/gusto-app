@@ -4,13 +4,24 @@ var User = require('../models/user');
 var mongoose = require('../db/dbconnection');
 var router = express.Router();
 
+// need to move this to middleware
+// redirect with some msg
+function requireLogin (req, res, next) {
+  console.log('User : ' + req.user);
+  if (!req.user) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
 
 /* GET home page. */
 router.get('/', (req, res) => {
   res.render('mainpage', {title: 'Welcome to Gusto!'});
 });
 
-router.get('/dashboard', (req, res) => {
+
+router.get('/dashboard', requireLogin, (req, res) => {
   res.render('dashboard', {title: 'Welcome to dashboard page !'});
 });
 
@@ -21,8 +32,8 @@ router.get('/login', (req, res) =>{
 router.post('/loginusr', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, user) {
     if (!user) {
-      //res.render('login.jade', { error: 'Invalid email or password.' });
-      res.status(400).send();
+      res.render('loginPage.jade', { error: 'Invalid email or password.' });
+      //res.status(400).send();
     } else {
       if (req.body.password === user.password) {
         // sets a cookie with the user's info
@@ -30,12 +41,15 @@ router.post('/loginusr', function(req, res) {
         req.session.user = user;
         res.redirect('/dashboard');
       } else {
-        res.render('login.jade', { error: 'Invalid email or password.' });
+        console.log(" Coming to login failure ");
+        res.render('loginPage.jade', { error: 'Invalid email or password!!! ' });
       }
     }
   });
 });
 
+// To Do's need to modify for more field to save
+// as of now just saving email and password
 router.post('/register', (req, res) => {
   var body = _.pick(req.body, ['email', 'password']);
   var user = new User(body);
@@ -47,26 +61,10 @@ router.post('/register', (req, res) => {
   });
 });
 
-/*router.get('/dashboard', (req, res) => {
-  if (req.session && req.session.user) { // Check if session exists
-    // lookup the user in the DB by pulling their email from the session
-    User.findOne({ email: req.session.user.email }, function (err, user) {
-      if (!user) {
-        // if the user isn't found in the DB, reset the session info and
-        // redirect the user to the login page
-        req.session.reset();
-        res.redirect('/login');
-      } else {
-        // expose the user to the template
-        res.locals.user = user;
-
-        // render the dashboard page
-        res.render('dashboard', {title: 'Welcome to dashboard page !'});
-      }
-    });
-  } else {
-    res.redirect('/register');
-  }
-});*/
+// To Do's need to make a button loout in  dashboard.jade
+router.get('/logout', function(req, res) {
+  req.session.reset();
+  res.redirect('/');
+});
 
 module.exports = router;

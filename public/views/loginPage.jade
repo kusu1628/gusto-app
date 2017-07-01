@@ -33,8 +33,16 @@ html(lang='en')
                         .form-check
                             input.form-check-input(type='checkbox', value='remember-me', name='rememberMe')
                             label#lab.control-label(style='color: white') Remember me
+                            button.btn.btn-link(type='button', style='color: white') Lost Password?
                       .form-group
-                          button.btn.btn-primary(type='submit') Log In      
+                          button.btn.btn-primary(type='submit') Log In  
+                          
+                      if error
+                       ul
+                        li
+                         p(style='color: red ;font-weight: bold')!= error        
+                          
+                          
     
 
                           
