@@ -16,6 +16,7 @@ html(lang='en')
               .container
                 .col-sm-6
                   form#contact_form.form-horizontal(method='POST', action='/loginusr', role='form')
+                    input(type='hidden', name='_csrf', value = csrfToken)
                     fieldset
                       .form-group
                         label#lab.control-label(for='firstname' style='color: white') EMAIL
@@ -36,7 +37,7 @@ html(lang='en')
                             button.btn.btn-link(type='button', style='color: white') Lost Password?
                       .form-group
                           button.btn.btn-primary(type='submit') Log In  
-                          
+                      p = csrfTokenFunction()    
                       if error
                        ul
                         li

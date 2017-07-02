@@ -2,30 +2,37 @@ require('./config/dbconfig');
 const path = require('path');
 const express = require('express');
 const session = require('client-sessions');
+const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 var User = require('./models/user');
+var csrf = require('csurf');
 var user = require('./routes/user-router');
 var mainpage = require('./routes/mainPageRoute');
-var cookieParser = require('cookie-parser')
-
+var cookieParser = require('cookie-parser');
+var attachCsrfToken = require('./middleware/csrfToken');
 
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
 const app = express();
 const bodyParser = require('body-parser');
-console.log('publicPath : ' + publicPath);
 
 app.use(express.static(publicPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+
 app.use(session({
   cookieName: 'session',
   secret: 'random_string_goes_here',
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
+  httpOnly: true,
+  secure: true,
+  ephemeral: true
 }));
+
+app.use(csrf());
 
 // To Do's this method should be moved to middleware
 // this middleware is resposible for fetching user from session
@@ -47,6 +54,11 @@ app.use(function(req, res, next) {
     next();
   }
 });
+app.use(function (req, res, next) {
+  console.log(' here is generating csrf token');
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 
 app.set('views', path.join(__dirname , '../public/views'));
 app.set('view engine', 'jade');
@@ -56,6 +68,5 @@ app.use('/', mainpage);
 app.listen(port, () => {
   console.log(`Server is up at port ${port}`);
 });
-
 
 module.exports = app;

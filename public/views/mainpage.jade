@@ -40,6 +40,7 @@ html(lang="en")
     block content
       .container(id='dialog-form')
          form#contact_form.form-horizontal(method='POST', action='/register')
+          input(type='hidden', name='_csrf', value = csrfToken)
           fieldset
            .form-group
              label#lab.control-label(for='firstname') First Name:
